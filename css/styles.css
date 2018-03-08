@@ -1,0 +1,645 @@
+*,
+*::after,
+*::before {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+body {
+    background-color: #1C7430;
+    color: #fff;
+    font: 18px/24px Helvetica, Arial, Sans-Serif;
+    ;
+}
+
+@font-face {
+    font-family: 'krungthep';
+    src: url('fonts/krungthep-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'OpenSans';
+    src: url('fonts/opensans.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'OpenSans-Bold';
+    src: url('fonts/opensans-bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'OpenSans-Semibold';
+    src: url('fonts/opensans-semibold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+#start-btn {
+    opacity: 0.85;
+    transition: opacity 0.4s;
+    flex-basis: 100%;
+}
+
+#start-btn:hover {
+    opacity: 0.75;
+}
+
+#start-btn button {}
+
+.loaded .start-btn {
+    cursor: pointer;
+    width: 144px;
+    height: 42px;
+    line-height: 40px;
+    font-family: OpenSans-Bold;
+    font-size: 16px;
+    color: #1C7430;
+    letter-spacing: 0;
+    animation: none;
+    border: none;
+    background-color: #FFF;
+}
+
+.loaded .start-btn > .start-btn-inner {
+    animation: none;
+    display: none;
+}
+
+.start-btn {
+    transition: width 0.3s, font-size 0.2s ease-in;
+    border-radius: 5px;
+    display: inline-block;
+    flex-basis: 100%;
+    width: 42px;
+    height: 42px;
+    position: relative;
+    border: 4px solid #FBFBFB;
+    /*top: calc(50% - 26px);*/
+    animation: loader 4s infinite ease;
+    /*border-radius: 5px;*/
+    font-size: 0;
+    background: none;
+    user-select: none;
+}
+
+@keyframes loader {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(180deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    75% {
+        transform: rotate(360deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#tests-btn {
+    height: 25px;
+    opacity: 0.2;
+    z-index: 2;
+    position: absolute;
+    top: 22px;
+    right: 22px;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}
+
+#mocha {
+    display: none;
+}
+
+#mocha-report {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    box-sizing: border-box;
+    margin: 0!important;
+    padding: 10px !important;
+    width: 60%;
+    padding: 10px;
+    background: white;
+    color: black;
+    z-index: 2;
+    box-shadow: 2px 2px 10px black;
+    border-radius: 5px;
+}
+
+#mocha-stats {
+    right: 158px !important;
+}
+
+.modal-footer {
+    flex-basis: 100%;
+}
+
+.wrapper {
+    width: 1080px;
+    margin: 0 auto;
+}
+
+header {
+    height: 28px;
+    margin: 72px 0 40px;
+    opacity: 0.8;
+    font-size: 21px;
+    color: #FFFFFF;
+    letter-spacing: -0.25px;
+    position: relative;
+    padding: 0 14.5px;
+    display: none;
+}
+
+#sound_player {
+    display: none;
+}
+
+.restart-btn {
+    cursor: pointer;
+    font-family: 'OpenSans-Semibold';
+    float: left;
+}
+
+.scores {
+    font-family: 'OpenSans-Bold';
+    letter-spacing: 0;
+    float: right;
+}
+
+.Menu-scores {
+    font-family: 'krungthep';
+}
+
+
+/* close commented backslash hack */
+
+
+/* header */
+
+.tag-line {
+    margin: 20px;
+    color: #fff;
+    text-align: center;
+    font: italic bold 40px/40px Helvetica, Arial, Sans-Serif;
+}
+
+
+/* game board and cards */
+
+.board {
+    display: flex;
+    margin: auto;
+    max-width: 1110px;
+    flex-wrap: wrap;
+}
+
+.card {
+    position: relative;
+    float: left;
+    width: 151px;
+    height: 210px;
+    text-align: center;
+    margin: 0 14.5px 29px;
+}
+
+.card-back,
+.card-front {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-transition: -webkit-transform 0.3s;
+    transition: transform 0.3s;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.card-front {
+    /*border: 10px solid #2a75bb;
+  background-color: #3c5aa6;*/
+}
+
+.card-back {
+    /*border: 10px solid #2a75bb;
+  background-color: #fff;*/
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+}
+
+.card-front-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    margin: auto;
+    height: 100%;
+    /*padding: 5%;*/
+    width: 100%;
+    background: url("../images/cover.png");
+    background-size: cover;
+    cursor: pointer;
+}
+
+.card-back-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    margin: auto;
+    height: 100%;
+    /*padding: 5%;*/
+    width: 100%;
+}
+
+.card-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    margin: auto;
+    /*padding: 5%;*/
+    width: 100%;
+}
+
+
+/* click effect */
+
+.card.flipped .card-front {
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+}
+
+.card.flipped .card-back {
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
+}
+
+.card.removed {
+    opacity: 0;
+    transition: opacity 0.3s;
+    transition-delay: 0.3s;
+}
+
+
+/* footer */
+
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+}
+
+.counter,
+.timer,
+.rating {
+    width: 33%;
+    text-align: center;
+}
+
+.info {
+    color: #fff;
+    letter-spacing: 5px;
+    font: 32px/1.25 'Pokemon Solid', Helvetica, Arial, Sans-Serif;
+}
+
+.data {
+    letter-spacing: normal;
+    font: 700 32px/1.25 Helvetica, Arial, Sans-Serif;
+}
+
+
+/* modal */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    background-color: #1C7430;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+
+/* modal close Button */
+
+.close {
+    color: #aaa;
+    font: bold 24px/24px Helvetica, Arial, Sans-Serif;
+    width: 100%;
+    text-align: right;
+}
+
+.close:focus,
+.close:hover {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    width: 503px;
+    text-align: center;
+}
+
+
+/* Add Animation */
+
+@-webkit-keyframes animatetop {
+    from {
+        opacity: 1
+    }
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes animatetop {
+    from {
+        opacity: 0
+    }
+    to {
+        opacity: 1
+    }
+}
+
+.modal-data {
+    float: left;
+    text-align: center;
+    width: 50%;
+}
+
+.play-again {
+    width: 100%;
+}
+
+.congrats {
+    font: 40px/60px 'Pokemon Solid', Helvetica, Arial, Sans-Serif;
+    color: #ffcb05;
+    margin: 10px;
+    text-align: center;
+    text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 2px 0 #000;
+    letter-spacing: 6px;
+    -webkit-text-stroke: 2px #3c5aa6;
+    width: 100%;
+}
+
+.win-text {
+    font: italic 18px/24px Helvetica, Arial, Sans-Serif;
+    text-align: center;
+}
+
+.modal-footer button {
+    display: block;
+    border: none;
+    margin: 0 auto;
+    font-family: "OpenSans-Bold";
+    font-size: 16px;
+    font-weight: bold;
+    color: #1C7430;
+    letter-spacing: 0;
+    user-select: none;
+}
+
+.modal-footer button:hover {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.level-button {
+    width: 144px;
+    height: 42px;
+    opacity: 0.85;
+    background: #FFFFFF;
+    border-radius: 4px;
+    transition: 0.4s;
+}
+
+.level-button:hover {
+    opacity: 0.75;
+}
+
+.choose {
+    font: 40px/60px 'Pokemon Solid', Helvetica, Arial, Sans-Serif;
+    color: #ffcb05;
+    margin: 10px 0 40px;
+    text-align: center;
+    text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 2px 0 #000;
+    letter-spacing: 6px;
+    -webkit-text-stroke: 2px #3c5aa6;
+    width: 100%;
+}
+
+.start {
+    flex-basis: 100%;
+    background: url('../images/StartGame@2x.png') no-repeat center;
+    background-size: contain;
+    min-height: 262px;
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.start:before {
+    background: url('../images/Group 2@2x.png');
+    width: 0;
+    height: 0;
+    visibility: hidden;
+    content: "";
+}
+
+.win {
+    flex-basis: 100%;
+    background: url('../images/Group 2@2x.png') no-repeat center;
+    background-size: contain;
+    min-height: 262px;
+    margin-bottom: 20px;
+}
+
+#startModal,
+#winModal {
+    align-items: center;
+}
+
+.startModalTitle {
+    opacity: 0.85;
+    flex-basis: 100%;
+    margin-bottom: 34px;
+    text-align: center;
+    letter-spacing: 8px;
+    font-family: 'OpenSans-Bold';
+    font-size: 28px;
+    letter-spacing: 0.4px;
+    line-height: 38px;
+    text-transform: uppercase;
+}
+
+.winModalTitle {
+    flex-basis: 100%;
+    margin-bottom: 34px;
+    text-align: center;
+    opacity: 0.85;
+    font-family: 'OpenSans-Bold';
+    font-size: 24px;
+    color: #FFFFFF;
+    letter-spacing: 0.15px;
+    line-height: 35px;
+}
+
+@media (max-width: 1200px) {
+    .wrapper {
+        width: 717.6px;
+    }
+    .card {
+        width: 102px;
+        height: 142px;
+        margin: 0 8.8px 17.6px;
+    }
+    header {
+        padding: 0 8.8px;
+    }
+}
+
+
+/*@media (max-width: 1200px) {
+    .hard .card {
+        width: 125px;
+        height: 125px;
+    }
+    .hard {
+        max-width: 810px;
+    }
+}
+
+@media (max-width: 880px) {
+    .hard .card {
+        width: 100px;
+        height: 100px;
+    }
+    .hard {
+        max-width: 660px;
+    }
+}
+
+@media (max-width: 800px) {
+    .card {
+        width: 100px;
+        height: 140px;
+        margin: 0 5px 10px;
+    }
+    .wrapper {
+        max-width: 660px;
+    }
+    header {
+        padding: 0 5px;
+    }
+}
+
+@media (max-width: 660px) {
+    .card {
+        width: 75.5px;
+        height: 105px;
+    }
+    .wrapper {
+        max-width: 513px;
+    }
+}
+
+@media (max-width: 500px) {
+    .wrapper {
+        max-width: 500px;
+    }
+}
+
+@media (max-width: 450px) {
+    .tag-line {
+        font-size: 18px;
+        margin: 15px;
+    }
+    .card {
+        width: 75px;
+        height: 75px;
+    }
+    .easy,
+    .medium {
+        max-width: 340px;
+    }
+    .counter,
+    .timer {
+        flex-basis: 100%;
+    }
+    .data,
+    .info {
+        font-size: 28px;
+    }
+}*/

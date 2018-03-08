@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Memory Game Project for Kontur">
+    <meta name="author" content="Nicholas Fateev ">
+    <title>Memory Game</title>
+    <link href="css/styles.css" rel="stylesheet">
+    <!-- подключаем стили Mocha, для отображения результатов -->
+    <link href="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.css" rel="stylesheet" />
+    <!-- подключаем библиотеку Mocha -->
+    <script src="https://cdn.rawgit.com/Automattic/expect.js/0.3.1/index.js"></script>
+    <script src="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.js"></script>
+    <!-- настраиваем Mocha: предстоит BDD-тестирование -->
+    <script>
+        mocha.setup('bdd');
+    </script>
+    <!-- подключаем chai -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/2.0.0/chai.js"></script>
+    <!-- в chai есть много всего, выносим assert в глобальную область -->
+    <script>
+        var assert = chai.assert;
+    </script>
+    <audio id="flip" preload="auto" autobuffer>
+        <source src="sounds/flip.ogg" type="audio/ogg">
+        <source src="sounds/flip.mp3" type="audio/mp3">
+    </audio>
+    <audio id="win" preload="auto" autobuffer>
+        <source src="sounds/win.ogg" type="audio/ogg">
+        <source src="sounds/win.mp3" type="audio/mp3">
+    </audio>
+    <link rel="prefetch prerender" href="images/StartGame@2x.png" />
+    <link rel="prefetch prerender" href="images/Group 2@2x.png" />
+</head>
+
+<body>
+    <!-- в элементе с id="mocha" будут результаты тестов -->
+    <div id="tests-btn">Показать тесты</div>
+    <div id="mocha"></div>
+    <!--<div id="loader">
+			<span class="loader"><span class="loader-inner"></span></span>
+		</div>-->
+    <section class="wrapper">
+        <header>
+            <div class="restart-btn restart">Начать заново</div>
+            <div class="scores">Очки: <span class="Menu-scores score">0</span></div>
+        </header>
+        <div id="sound_player"></div>
+        <section id="game-board" class="board"></section>
+
+        <!-- Start Modal -->
+        <div id="startModal" class="modal">
+            <div class="modal-content">
+                <div class="site-title start clearfix"></div>
+                <div class="startModalTitle">Memory Game</div>
+                <div id="start-btn" class="">
+                    <button class="start-btn">Начать игру<span class="start-btn-inner"></span></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Win Message -->
+        <div id="winModal" class="modal">
+            <div class="modal-content">
+                <div class="site-title win clearfix"></div>
+                <div class="winModalTitle">Поздравляем!
+                    <p>Ваш итоговый счет: <span class="score">0</span></p>
+                </div>
+                <div class="modal-footer">
+                    <button class="level-button restart">Еще раз</button>
+                </div>
+            </div>
+
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+        <script src="js/data.js"></script>
+        <script src="js/game.js"></script>
+        <!-- в этом скрипте находятся спеки -->
+        <script src="test/tests.js"></script>
+
+        <!-- запустить тесты! -->
+        <script>
+            var testStarted = 0;
+            $('#tests-btn').click(function() {
+
+                if (testStarted == 0) {
+                    mocha.checkLeaks();
+                    mocha.globals(['jQuery']);
+                    mocha.run();
+                    testStarted = 1;
+                }
+            });
+        </script>
+    </section>
+
+</body>
+
+</html>
