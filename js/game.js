@@ -1,5 +1,12 @@
 'use strict';
 
+let click1 = {},
+    click2 = {},
+    paths = [],
+    pairs = 9,
+    gameStarted = false,
+    matches, score, moves;
+
 //предзагрузчик изображений
 
 function pathsCards() {
@@ -32,15 +39,7 @@ function preloadImages() {
     }
 }
 
-let click1 = {},
-    click2 = {},
-    paths = [],
-    pairs = 9,
-    gameStarted = false,
-    matches, score, moves;
-
 function Card(card, num) {
-    //console.log(card.id,card.image,card.name);
     let cardID = card.id + '-' + num;
     this.id = '#' + card.id + '-' + num;
     this.image = card.image;
@@ -51,7 +50,7 @@ function Card(card, num) {
 // set size of card array based on level
 function trimArray(array) {
     let newArray = array.slice();
-    // trim array as needed
+    // отрезание массива по мере необходимости
     while (newArray.length > pairs) {
         let randomIndex = Math.floor(Math.random() * newArray.length);
         newArray.splice(randomIndex, 1);
@@ -63,10 +62,9 @@ function makeCardArray(data) {
 
     let array = [];
 
-    // Get the correct sized array for level
     let trimmedData = trimArray(data);
 
-    // Add two of each card to the array
+    // Добавление двух парных карт в массив
     trimmedData.forEach(function(card) {
         array.push(new Card(card, 1));
         array.push(new Card(card, 2));
@@ -76,19 +74,16 @@ function makeCardArray(data) {
 }
 
 function shuffle(array) {
-    let currentIndex = array.length,
-        temporaryValue, randomIndex;
+    let currentIndex = array.length, randomIndex;
 
     while (0 !== currentIndex) {
 
-        // Choose an element randomly
+        // Выбор случайного элемента
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
 
-        // Switch current element and random element
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
+        // Свап current element и random element
+        array[currentIndex] = [array[randomIndex], array[randomIndex] = array[currentIndex]][0];
     }
 
     return array;
@@ -97,7 +92,7 @@ function shuffle(array) {
 function displayCards(cardArray) {
     let cards = [];
     cardArray.forEach(function(card) {
-        // Add cards to game board
+        // Добавление карт в #game-board
         cards.push(card.html);
     });
 
@@ -106,15 +101,14 @@ function displayCards(cardArray) {
     setTimeout(function() {
         cardArray.forEach(function(card) {
             gameStartedFlip(card);
-
+            if (!gameStarted) {
+                gameStarted = true;
+            }
             setTimeout(function() {
-
-                if (!gameStarted) {
-                    gameStarted = true;
-                }
-                // Add click listeners
+                
+                // Включение обработчика кликов
                 $(card.id).click(function() {
-                    // Check for match when clicked
+                    // Проверка на парность
                     checkMatch(card);
                 });
             }, 5000);
@@ -123,7 +117,6 @@ function displayCards(cardArray) {
 }
 
 function playSound(sound) {
-    //document.getElementById(sound).play();
     $("#sound_player").html('<audio autoplay><source src="sounds/' + sound + '.ogg" /><source src="sounds/' + sound + '.mp3" /></audio>');
 }
 
@@ -139,11 +132,10 @@ function gameStartedFlip(card) {
 function matchScore(op) {
     if (op == 'add')
         score += (pairs - matches) * 42;
-    else if (op == 'rem') {
+    else if (op == 'sub') {
         score -= (matches) * 42;
         if (score < 0) score = 0;
-    } else
-        score = 0;
+    } else score = 0;
     $(".score").text(score);
 }
 
@@ -161,24 +153,15 @@ function checkMatch(card) {
         playSound('flip');
         $(card.id).addClass('flipped');
 
-        // Update move count
-        moves++;
-        $("#moves").text(moves);
-
     } else return;
-
     if (click1.name === click2.name) {
 
         foundMatch();
         matchScore('add');
-        //  score += (pairs - matches) * 42;
     } else {
         hideCards();
-        matchScore('rem');
-        //  score -= (matches) * 42;
+        matchScore('sub');
     };
-
-    //$(".Menu-scores").text(score);
 
 }
 
@@ -189,29 +172,31 @@ function foundMatch() {
     if (matches === pairs) {
         gameOver();
     }
-
-    // Unbind click functions and reset click objects
+    // Запрет на выбор уже раскрытых пар
     $(click1.id).unbind('click');
     $(click2.id).unbind('click');
-    // reset click objects
-    click1 = {};
-    click2 = {};
+    // Пауза перед новой попыткой
+    setTimeout(function() {
+        // сброс выбранных объектов
+        click1 = {};
+        click2 = {};
+    }, 600);
 }
 
 function hideCards() {
-    //hide cards
+    // Пауза перед обратным скрытием неверно выбранных карт
     setTimeout(function() {
         playSound('flip');
         $(click1.id).removeClass('flipped');
         $(click2.id).removeClass('flipped');
-        // reset click objects
+        // сброс выбранных объектов
         click1 = {};
         click2 = {};
     }, 600);
 }
 
 function gameOver() {
-    // Pause before shoe modal
+    // Пауза перед показом окна победы
     setTimeout(function() {
         playSound('win');
         $('#winModal').show().css('display', 'flex');
@@ -219,12 +204,13 @@ function gameOver() {
 }
 
 $(document).ready(function() {
+    // Предзагрузка лого
     preloadImages('images/StartGame@2x.png');
 });
 
 $(window).on('load', function() {
 
-    // Open start modal on load
+    // Показ стартового экрана после загрузки
     $('#startModal').show().css('display', 'flex');
 
     pathsCards();
@@ -254,7 +240,7 @@ function restart() {
 
 function game(cards, level) {
 
-    // reset game variables
+    // Сброс значений игровых переменных
     gameStarted = false;
     matchScore();
     click1 = 0;
@@ -262,14 +248,14 @@ function game(cards, level) {
     moves = 0;
     matches = 0;
 
-    // reset HTML
+    // сброс HTML
     $('#game-board').empty();
 
     $(".clock").text('0:00');
     $("#moves").text('0');
     $('#winModal').hide();
 
-    // Get cards and start the game!
+    // Получение карт и начало игры
     let cardArray = makeCardArray(cardData);
 
     shuffle(cardArray);
