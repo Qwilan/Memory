@@ -60,7 +60,7 @@ body {
     src: url('fonts/krungthep-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-    font-display: block;
+    font-display: auto;
 }
 
 @font-face {
@@ -68,7 +68,7 @@ body {
     src: url('fonts/opensans.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-    font-display: block;
+    font-display: auto;
 }
 
 @font-face {
@@ -76,7 +76,7 @@ body {
     src: url('fonts/opensans-bold.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-    font-display: block;
+    font-display: auto;
 }
 
 @font-face {
@@ -84,7 +84,7 @@ body {
     src: url('fonts/opensans-semibold.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-    font-display: block;
+    font-display: auto;
 }
 
 .container {
