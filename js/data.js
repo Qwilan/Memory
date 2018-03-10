@@ -12,7 +12,7 @@ const cardData = [
 	{id: "JC", image: "JC.png", name: "Jack of clubs"},
 	{id: "QC", image: "QC.png", name: "Queen of clubs"},
 	{id: "KC", image: "KC.png", name: "King of clubs"},
-	{id: "AD", image: "AD.png", name: "Ace of diamonds"},
+	{id: "AD", image: "AceD.png", name: "Ace of diamonds"}, //name fix for ADblock 
 	{id: "2D", image: "2D.png", name: "2 of diamonds"},
 	{id: "3D", image: "3D.png", name: "3 of diamonds"},
 	{id: "4D", image: "4D.png", name: "4 of diamonds"},
