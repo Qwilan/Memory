@@ -529,6 +529,7 @@ body {
     }
     .container {
         width: 523px;
+        max-width: 100%;
     }
     .board {
         width: 336px;
