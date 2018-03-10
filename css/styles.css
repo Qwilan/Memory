@@ -53,9 +53,8 @@ body {
     background-color: #1C7430;
     color: #fff;
     font: 18px/24px Helvetica, Arial, Sans-Serif;
-    ;
+    user-select: none;
 }
-
 @font-face {
     font-family: 'krungthep';
     src: url('fonts/krungthep-webfont.woff') format('woff');
@@ -88,161 +87,52 @@ body {
     font-display: block;
 }
 
-#start-btn {
-    opacity: 0.85;
-    transition: opacity 0.4s;
-    flex-basis: 100%;
-}
-
-#start-btn:hover {
-    opacity: 0.75;
-}
-
-#start-btn button {}
-
-.loaded .start-btn {
-    cursor: pointer;
-    width: 144px;
-    height: 42px;
-    line-height: 40px;
-    font-family: OpenSans-Bold;
-    font-size: 16px;
-    color: #1C7430;
-    letter-spacing: 0;
-    animation: none;
-    border: none;
-    background-color: #FFF;
-}
-
-.loaded .start-btn > .start-btn-inner {
-    animation: none;
-    display: none;
-}
-
-.start-btn {
-    transition: width 0.3s, font-size 0.2s ease-in;
-    border-radius: 5px;
-    display: inline-block;
-    flex-basis: 100%;
-    width: 42px;
-    height: 42px;
-    position: relative;
-    border: 4px solid #FBFBFB;
-    /*top: calc(50% - 26px);*/
-    animation: loader 4s infinite ease;
-    /*border-radius: 5px;*/
-    font-size: 0;
-    background: none;
-    user-select: none;
-}
-
-@keyframes loader {
-    0% {
-        transform: rotate(0deg);
-    }
-    25% {
-        transform: rotate(180deg);
-    }
-    50% {
-        transform: rotate(180deg);
-    }
-    75% {
-        transform: rotate(360deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-#tests-btn {
-    height: 25px;
-    opacity: 0.2;
-    z-index: 2;
-    position: absolute;
-    top: 22px;
-    right: 22px;
-    -moz-user-select: none;
-    -khtml-user-select: none;
-    user-select: none;
-    cursor: pointer;
-}
-
-#mocha {
-    display: none;
-}
-
-#mocha-report {
-    position: absolute;
-    left: 10px;
-    top: 10px;
-    box-sizing: border-box;
-    margin: 0!important;
-    padding: 10px !important;
-    width: 60%;
-    padding: 10px;
-    background: white;
-    color: black;
-    z-index: 2;
-    box-shadow: 2px 2px 10px black;
-    border-radius: 5px;
-}
-
-#mocha-stats {
-    right: 158px !important;
-}
-
-.modal-footer {
-    flex-basis: 100%;
-}
-
 .wrapper {
-    width: 1080px;
+    width: 720px;
     margin: 0 auto;
-}
-
-header {
-    height: 28px;
-    margin: 72px 0 40px;
-    opacity: 0.8;
-    font-size: 21px;
-    color: #FFFFFF;
-    letter-spacing: -0.25px;
-    position: relative;
-    padding: 0 14.5px;
-    display: none;
 }
 
 #sound_player {
     display: none;
 }
 
-.restart-btn {
-    cursor: pointer;
-    font-family: 'OpenSans-Semibold';
-    float: left;
+
+/* nav */
+
+.info {
+    height: 19px;
+    margin-top: 54px;
+    margin-bottom: 20px;
+    opacity: 0.8;
+    color: #FFFFFF;
+    padding: 0 10px;
+    display: none;
 }
 
-.scores {
+.restart-title {
+    border: none;
+    cursor: pointer;
+    float: left;
+    padding: 0;
+    margin: 0;
+    font-family: OpenSans-semibold;
+    font-size: 14px;
+    color: #FFFFFF;
+    letter-spacing: -0.25px;
+    background: no-repeat;
+}
+
+.score-title {
     font-family: 'OpenSans-Bold';
     letter-spacing: 0;
+    font-size: 14px;
+    line-height: 14px;
     float: right;
 }
 
-.Menu-scores {
+.score-counter {
     font-family: 'krungthep';
-}
-
-
-/* close commented backslash hack */
-
-
-/* header */
-
-.tag-line {
-    margin: 20px;
-    color: #fff;
-    text-align: center;
-    font: italic bold 40px/40px Helvetica, Arial, Sans-Serif;
+    margin-left: 6px;
 }
 
 
@@ -251,17 +141,18 @@ header {
 .board {
     display: flex;
     margin: auto;
-    max-width: 1110px;
     flex-wrap: wrap;
+    height: 474px;
+    width: 720px;
 }
 
 .card {
     position: relative;
     float: left;
-    width: 151px;
-    height: 210px;
+    width: 100px;
+    height: 138px;
     text-align: center;
-    margin: 0 14.5px 29px;
+    margin: 0 10px 20px;
 }
 
 .card-back,
@@ -271,21 +162,11 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
-    -webkit-transition: -webkit-transform 0.3s;
     transition: transform 0.3s;
-    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
 }
 
-.card-front {
-    /*border: 10px solid #2a75bb;
-  background-color: #3c5aa6;*/
-}
-
 .card-back {
-    /*border: 10px solid #2a75bb;
-  background-color: #fff;*/
-    -webkit-transform: rotateY(-180deg);
     transform: rotateY(-180deg);
 }
 
@@ -344,34 +225,6 @@ header {
 }
 
 
-/* footer */
-
-footer {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    justify-content: center;
-}
-
-.counter,
-.timer,
-.rating {
-    width: 33%;
-    text-align: center;
-}
-
-.info {
-    color: #fff;
-    letter-spacing: 5px;
-    font: 32px/1.25 'Pokemon Solid', Helvetica, Arial, Sans-Serif;
-}
-
-.data {
-    letter-spacing: normal;
-    font: 700 32px/1.25 Helvetica, Arial, Sans-Serif;
-}
-
-
 /* modal */
 
 .modal {
@@ -386,121 +239,21 @@ footer {
     overflow: auto;
 }
 
-
-/* modal close Button */
-
-.close {
-    color: #aaa;
-    font: bold 24px/24px Helvetica, Arial, Sans-Serif;
-    width: 100%;
-    text-align: right;
-}
-
-.close:focus,
-.close:hover {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-
 .modal-content {
     position: relative;
     display: flex;
     flex-wrap: wrap;
     margin: auto;
-    width: 503px;
+    width: 523px;
     text-align: center;
+    padding: 0 10px;
 }
 
-
-/* Add Animation */
-
-@-webkit-keyframes animatetop {
-    from {
-        opacity: 1
-    }
-    to {
-        opacity: 1
-    }
+.modal-footer {
+    flex-basis: 100%;
 }
 
-@keyframes animatetop {
-    from {
-        opacity: 0
-    }
-    to {
-        opacity: 1
-    }
-}
-
-.modal-data {
-    float: left;
-    text-align: center;
-    width: 50%;
-}
-
-.play-again {
-    width: 100%;
-}
-
-.congrats {
-    font: 40px/60px 'Pokemon Solid', Helvetica, Arial, Sans-Serif;
-    color: #ffcb05;
-    margin: 10px;
-    text-align: center;
-    text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 2px 0 #000;
-    letter-spacing: 6px;
-    -webkit-text-stroke: 2px #3c5aa6;
-    width: 100%;
-}
-
-.win-text {
-    font: italic 18px/24px Helvetica, Arial, Sans-Serif;
-    text-align: center;
-}
-
-.modal-footer button {
-    display: block;
-    border: none;
-    margin: 0 auto;
-    font-family: "OpenSans-Bold";
-    font-size: 16px;
-    font-weight: bold;
-    color: #1C7430;
-    letter-spacing: 0;
-    user-select: none;
-}
-
-.modal-footer button:hover {
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.level-button {
-    width: 144px;
-    height: 42px;
-    opacity: 0.85;
-    background: #FFFFFF;
-    border-radius: 4px;
-    transition: 0.4s;
-}
-
-.level-button:hover {
-    opacity: 0.75;
-}
-
-.choose {
-    font: 40px/60px 'Pokemon Solid', Helvetica, Arial, Sans-Serif;
-    color: #ffcb05;
-    margin: 10px 0 40px;
-    text-align: center;
-    text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 2px 0 #000;
-    letter-spacing: 6px;
-    -webkit-text-stroke: 2px #3c5aa6;
-    width: 100%;
-}
-
-.start {
+.modalImage-start {
     flex-basis: 100%;
     background: url('../images/StartGame@2x.png') no-repeat center;
     background-size: contain;
@@ -510,136 +263,284 @@ footer {
     margin-bottom: 20px;
 }
 
-.start:before {
-    background: url('../images/Group 2@2x.png');
+.modalImage-start:before {
+    background: url('../images/Group2@2x.png');
     width: 0;
     height: 0;
     visibility: hidden;
     content: "";
 }
 
-.win {
+.modalImage-win {
     flex-basis: 100%;
-    background: url('../images/Group 2@2x.png') no-repeat center;
+    background: url('../images/Group2@2x.png') no-repeat center;
     background-size: contain;
     min-height: 262px;
     margin-bottom: 20px;
 }
 
-#startModal,
-#winModal {
-    align-items: center;
-}
-
-.startModalTitle {
-    opacity: 0.85;
+.modalTitle {
     flex-basis: 100%;
     margin-bottom: 34px;
+    opacity: 0.85;
     text-align: center;
-    letter-spacing: 8px;
     font-family: 'OpenSans-Bold';
+}
+
+.modalTitle-start {
     font-size: 28px;
-    letter-spacing: 0.4px;
+    letter-spacing: 0.2px;
     line-height: 38px;
     text-transform: uppercase;
 }
 
-.winModalTitle {
-    flex-basis: 100%;
-    margin-bottom: 34px;
-    text-align: center;
-    opacity: 0.85;
-    font-family: 'OpenSans-Bold';
+.modalTitle-win {
     font-size: 24px;
     color: #FFFFFF;
     letter-spacing: 0.15px;
     line-height: 35px;
 }
 
-@media (max-width: 1200px) {
-    .wrapper {
-        width: 717.6px;
+.btn {
+    opacity: 0.85;
+    transition: opacity 0.2s linear;
+    border-radius: 4px;
+    font-family: OpenSans-Bold;
+    font-size: 16px;
+    color: #1C7430;
+    letter-spacing: 0;
+    height: 42px;
+    box-sizing: border-box;
+    border: none;
+    cursor: pointer;
+    background: #FFF;
+}
+
+.btn:hover {
+    opacity: 0.75;
+}
+
+.start-btn {
+    transition: width 0.3s, font-size 0.2s ease-in, opacity 0.2s linear;
+    width: 42px;
+    height: 42px;
+    border: 4px solid #FFF;
+    animation: loader 4s infinite ease;
+    font-size: 0;
+    background: none;
+    cursor: default;
+}
+
+.restart-btn {
+    width: 128px;
+}
+
+.loaded {
+    cursor: pointer;
+    width: 144px;
+    height: 42px;
+    line-height: 40px;
+    font-family: OpenSans-Bold;
+    font-size: 16px;
+    animation: none;
+    border: none;
+    background: #FFF;
+}
+
+.loaded > .start-btn-inner {
+    animation: none;
+    display: none;
+}
+
+@keyframes loader {
+    0% {
+        transform: rotate(0deg);
     }
-    .card {
-        width: 102px;
-        height: 142px;
-        margin: 0 8.8px 17.6px;
+    25% {
+        transform: rotate(180deg);
     }
-    header {
-        padding: 0 8.8px;
+    50% {
+        transform: rotate(180deg);
+    }
+    75% {
+        transform: rotate(360deg);
+    }
+    100% {
+        transform: rotate(360deg);
     }
 }
 
 
-/*@media (max-width: 1200px) {
-    .hard .card {
-        width: 125px;
-        height: 125px;
-    }
-    .hard {
-        max-width: 810px;
-    }
-}
+/* media */
 
-@media (max-width: 880px) {
-    .hard .card {
-        width: 100px;
-        height: 100px;
-    }
-    .hard {
-        max-width: 660px;
-    }
-}
-
-@media (max-width: 800px) {
-    .card {
-        width: 100px;
-        height: 140px;
-        margin: 0 5px 10px;
-    }
-    .wrapper {
-        max-width: 660px;
-    }
-    header {
-        padding: 0 5px;
-    }
-}
-
-@media (max-width: 660px) {
-    .card {
-        width: 75.5px;
-        height: 105px;
-    }
-    .wrapper {
-        max-width: 513px;
-    }
-}
-
-@media (max-width: 500px) {
-    .wrapper {
-        max-width: 500px;
-    }
-}
-
-@media (max-width: 450px) {
-    .tag-line {
-        font-size: 18px;
-        margin: 15px;
-    }
-    .card {
-        width: 75px;
-        height: 75px;
-    }
-    .easy,
-    .medium {
-        max-width: 340px;
-    }
-    .counter,
-    .timer {
-        flex-basis: 100%;
-    }
-    .data,
+@media (min-width: 1600px) {
     .info {
-        font-size: 28px;
+        margin-top: calc(54px * 1.5);
+        margin-bottom: calc(20px * 1.5);
+        height: calc(19px * 1.5);
+        padding: 0 calc(10px * 1.5);
     }
-}*/
+    .card {
+        margin: 0 calc(10px * 1.5) calc(20px * 1.5);
+    }
+    .wrapper {
+        width: calc(720px * 1.5);
+    }
+    .board {
+        width: calc(720px * 1.5);
+        height: calc(474px * 1.5);
+    }
+    .card {
+        width: calc(100px * 1.5);
+        height: calc(138px * 1.5);
+    }
+    .restart-title {
+        font-size: calc(14px * 1.5);
+    }
+    .score-title {
+        font-size: calc(14px * 1.5);
+    }
+}
+
+@media (max-width: 1599px) {
+    .info {
+        margin-top: calc(54px * 1);
+        margin-bottom: calc(20px * 1);
+        height: calc(19px * 1);
+        padding: 0 calc(10px * 1);
+    }
+    .card {
+        margin: 0 calc(10px * 1) calc(20px * 1);
+    }
+    .wrapper {
+        width: calc(720px * 1);
+    }
+    .board {
+        width: calc(720px * 1);
+        height: calc(474px * 1);
+    }
+    .card {
+        width: calc(100px * 1);
+        height: calc(138px * 1);
+    }
+    .restart-title {
+        font-size: calc(14px * 1);
+    }
+    .score-title {
+        font-size: calc(14px * 1);
+    }
+}
+
+@media (max-width: 1023px) {
+    .info {
+        margin-top: calc(54px / 1.12500);
+        margin-bottom: calc(20px / 1.12500);
+        height: calc(19px / 1.12500);
+        padding: 0 calc(10px / 1.12500);
+    }
+    .card {
+        margin: 0 calc(10px / 1.12500) calc(20px / 1.12500);
+    }
+    .wrapper {
+        width: calc(720px / 1.12500);
+    }
+    .board {
+        width: calc(720px / 1.12500);
+        height: calc(474px / 1.12500);
+    }
+    .card {
+        width: calc(100px / 1.12500);
+        height: calc(138px / 1.12500);
+    }
+    .restart-title {
+        font-size: calc(14px / 1.12500);
+    }
+    .score-title {
+        font-size: calc(14px / 1.12500);
+    }
+}
+
+@media (max-width: 639px) {
+    .info {
+        margin-top: calc(54px / 1.5);
+        margin-bottom: calc(20px / 1.5);
+        height: calc(19px / 1.5);
+        padding: 0 calc(10px / 1.5);
+    }
+    .card {
+        margin: 0 calc(10px / 1.5) calc(20px / 1.5);
+    }
+    .wrapper {
+        width: calc(720px / 1.5);
+    }
+    .board {
+        width: calc(720px / 1.5);
+        height: calc(474px / 1.5);
+    }
+    .card {
+        width: calc(100px / 1.5);
+        height: calc(138px / 1.5);
+    }
+    .restart-title {
+        font-size: calc(14px / 1.5);
+    }
+    .score-title {
+        font-size: calc(14px / 1.5);
+    }
+}
+
+@media (max-width: 480px) {
+    .info {
+        margin-top: calc(54px / 2.5);
+        margin-bottom: calc(20px / 2.5);
+        height: calc(19px / 2.5);
+        padding: 0 calc(10px / 2.5);
+    }
+    .card {
+        margin: 0 calc(10px / 2.5) calc(20px / 2.5);
+    }
+    .wrapper {
+        width: calc(720px / 2.5);
+    }
+    .board {
+        width: calc(720px / 2.5);
+        height: calc(474px / 2.5);
+    }
+    .card {
+        width: calc(100px / 2.5);
+        height: calc(138px / 2.5);
+    }
+    .restart-title {
+        font-size: calc(14px / 2.5);
+    }
+    .score-title {
+        font-size: calc(14px / 2.5);
+    }
+}
+
+@media (orientation:portrait) {
+    .info {
+        margin: 5px auto;
+        height: 19px;
+        width: 336px;
+        padding: 0px 29px;
+    }
+    .wrapper {
+        width: 523px;
+    }
+    .board {
+        width: 336px;
+        height: 510px;
+    }
+    .card {
+        width: 54px;
+        height: 75px;
+        margin: 0 29px 10px;
+    }
+    .restart-title {
+        font-size: 14px;
+    }
+    .score-title {
+        font-size: 14px;
+    }
+}

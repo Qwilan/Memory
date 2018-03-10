@@ -1,0 +1,63 @@
+#tests-btn {
+    height: 25px;
+    opacity: 0.2;
+    z-index: 2;
+    position: absolute;
+    top: 22px;
+    left: 22px;
+    cursor: pointer;
+}
+
+#close-tests-btn {
+    display: none;
+    font-size: 18px;
+    background: none;
+    padding: 0;
+    border: none;
+    height: 25px;
+    color: #000;
+    z-index: 4;
+    position: absolute;
+    top: 22px;
+    left: 22px;
+    cursor: pointer;
+}
+
+#mocha {
+    display: none;
+    margin: 0 !important;
+    padding: 60px 50px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 3;
+    background: #fff;
+    overflow-y: auto;
+}
+
+#mocha-report {
+    color: black;
+}
+
+#mocha-stats {
+    position: absolute !important;
+}
+
+#mocha h1 a {
+    pointer-events: none;
+}
+
+#mocha .test.pass .duration {
+    display: initial !important;
+    color: #000 !important;
+}
+
+#mocha .test pre {
+    overflow-x: auto;
+}
+
+#mocha .test a.replay {
+    display: none !important;
+}

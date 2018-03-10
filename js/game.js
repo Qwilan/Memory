@@ -5,11 +5,11 @@ let click1 = {},
     paths = [],
     pairs = 9,
     gameStarted = false,
-    matches, score, moves;
+    matches, score;
 
 //предзагрузчик изображений
 
-function pathsCards() {
+function pathsImages() {
     cardData.forEach(function(card) {
         paths.push("images/" + card.image);
     });
@@ -69,12 +69,12 @@ function makeCardArray(data) {
         array.push(new Card(card, 1));
         array.push(new Card(card, 2));
     });
-
     return array;
 }
 
 function shuffle(array) {
-    let currentIndex = array.length, randomIndex;
+    let currentIndex = array.length,
+        randomIndex;
 
     while (0 !== currentIndex) {
 
@@ -90,29 +90,31 @@ function shuffle(array) {
 }
 
 function displayCards(cardArray) {
-    let cards = [];
+
+    let cardsHTML = [];
+    let cardsID = [];
     cardArray.forEach(function(card) {
-        // Добавление карт в #game-board
-        cards.push(card.html);
+        cardsHTML.push(card.html);
+        cardsID.push(card.id);
     });
 
-    $('#game-board').append(cards);
+    // Добавление карт в #game-board
+    $('#game-board').append(cardsHTML);
 
     setTimeout(function() {
-        cardArray.forEach(function(card) {
-            gameStartedFlip(card);
+
+        gameStartedFlip(cardsID, function() {
             if (!gameStarted) {
                 gameStarted = true;
-            }
-            setTimeout(function() {
-                
+            };
+            cardArray.forEach(function(card) {
                 // Включение обработчика кликов
                 $(card.id).click(function() {
                     // Проверка на парность
                     checkMatch(card);
                 });
-            }, 5000);
-        })
+            });
+        });
     }, 100);
 }
 
@@ -120,27 +122,33 @@ function playSound(sound) {
     $("#sound_player").html('<audio autoplay><source src="sounds/' + sound + '.ogg" /><source src="sounds/' + sound + '.mp3" /></audio>');
 }
 
-function gameStartedFlip(card) {
+function gameStartedFlip(cards, callback) {
     playSound('flip');
-    $(card.id).addClass('flipped');
+    for (var i = 0; i < cards.length; i++) {
+        $(cards[i]).addClass('flipped');
+    };
+
     setTimeout(function() {
         playSound('flip');
-        ($(card.id).removeClass('flipped'));
+        for (var i = 0; i < cards.length; i++) {
+            $(cards[i]).removeClass('flipped');
+        };
+        if (callback) callback();
     }, 5000);
 }
 
 function matchScore(op) {
-    if (op == 'add')
+    if (op)
         score += (pairs - matches) * 42;
-    else if (op == 'sub') {
+    else if (op == false) {
         score -= (matches) * 42;
         if (score < 0) score = 0;
     } else score = 0;
-    $(".score").text(score);
+    $(".score-counter").text(score);
 }
 
 function checkMatch(card) {
-
+    //console.log(click1.name);
     if (!click1.name) {
         click1 = card;
         playSound('flip');
@@ -155,12 +163,13 @@ function checkMatch(card) {
 
     } else return;
     if (click1.name === click2.name) {
-
         foundMatch();
-        matchScore('add');
+        matchScore(true);
+
     } else {
+        matchScore(false);
         hideCards();
-        matchScore('sub');
+
     };
 
 }
@@ -199,7 +208,7 @@ function gameOver() {
     // Пауза перед показом окна победы
     setTimeout(function() {
         playSound('win');
-        $('#winModal').show().css('display', 'flex');
+        $('#modal-win').show().css('display', 'flex');
     }, 600);
 }
 
@@ -211,49 +220,43 @@ $(document).ready(function() {
 $(window).on('load', function() {
 
     // Показ стартового экрана после загрузки
-    $('#startModal').show().css('display', 'flex');
-
-    pathsCards();
+    $('#modal-start').show().css('display', 'flex');
+    if (!gameStarted) {
+        $('.restart').click(restart);
+    }
+    pathsImages();
     preloadImages(paths, start);
-
-    $('.restart').click(restart);
-
 });
 
 function start() {
-    $('#start-btn').addClass('loaded');
-    $('#start-btn').click(function() {
-        game(cardData);
-        $('#startModal').hide();
-        $('header').show();
-        game(cardData);
+    $('.start-btn').addClass('loaded');
+    $('.start-btn').click(function() {
+        game();
+        $('#modal-start').hide();
+        $('.info').show();
 
     });
 }
 
 function restart() {
     if (gameStarted) {
-        $('#winModal').hide();
-        game(cardData);
+        $('#modal-win').hide();
+        game();
     }
 }
 
-function game(cards, level) {
+function game() {
 
     // Сброс значений игровых переменных
     gameStarted = false;
     matchScore();
     click1 = 0;
     click2 = 0;
-    moves = 0;
     matches = 0;
 
     // сброс HTML
     $('#game-board').empty();
-
-    $(".clock").text('0:00');
-    $("#moves").text('0');
-    $('#winModal').hide();
+    $('#modal-win').hide();
 
     // Получение карт и начало игры
     let cardArray = makeCardArray(cardData);
