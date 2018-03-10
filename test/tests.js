@@ -95,7 +95,7 @@ describe("game()", function() {
                 id: "KD"
             };
             let newCard = new Card(card, 2);
-            let newCardHTML = "<article class='card' id='" + card.id + "-2'><div class='card-back'><div class='card-back-image' style='background: url(images/" + card.image + ");background-size: cover;'></div></div><div class='card-front'><div class='card-front-image'></div></div></article>";
+            let newCardHTML = "<article class='card' id='" + card.id + "-2'><div class='card-back' data-tid='Card-flipped'><div class='card-back-image' style='background: url(images/" + card.image + ");background-size: cover;'></div></div><div class='card-front' data-tid='Card'><div class='card-front-image'></div></div></article>";
             if (newCard.id == '#' + card.id + '-2' && newCard.image == card.image && newCard.name == card.name && newCard.html == newCardHTML)
                 done();
             else
@@ -180,7 +180,7 @@ describe("game()", function() {
                 }
             ];
             let expected = 0;
-            expected = '<section id="game-board" class="board">123-1123-2</section>';
+            expected = '<section id="game-board" class="board" data-tid="Deck">123-1123-2</section>';
             $('#game-board').empty();
             displayCards(cardArray);
             expect($('#game-board').prop('outerHTML')).to.have.string(expected);
