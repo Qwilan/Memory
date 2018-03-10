@@ -44,7 +44,7 @@ function Card(card, num) {
     this.id = '#' + card.id + '-' + num;
     this.image = card.image;
     this.name = card.name;
-    this.html = "<article class='card' id='" + cardID + "'><div class='card-back'><div class='card-back-image' style='background: url(images/" + this.image + ");background-size: cover;'></div></div><div class='card-front'><div class='card-front-image'></div></div></article>";
+    this.html = "<article class='card' id='" + cardID + "'><div class='card-back' data-tid='Card-flipped'><div class='card-back-image' style='background: url(images/" + this.image + ");background-size: cover;'></div></div><div class='card-front' data-tid='Card'><div class='card-front-image'></div></div></article>";
 }
 
 // set size of card array based on level

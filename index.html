@@ -27,14 +27,14 @@
         <div id="mocha"><button id="close-tests-btn">Закрыть тесты</button></div>
     <!-- конец блока тестов -->
     <div id="sound_player"></div>
-    <section class="wrapper">
+    <section class="container" data-tid="App">
         <section id="main">
             <div class="info">
-                <button class="restart-title restart">Начать заново</button>
-                <div class="score-title">Очки: <span class="score-counter">0</span></div>
+                <button class="restart-title restart" data-tid="Menu-newGame">Начать заново</button>
+                <div class="score-title">Очки: <span class="score-counter" data-tid="Menu-scores">0</span></div>
             </div>
 
-            <section id="game-board" class="board"></section>
+            <section id="game-board" class="board" data-tid="Deck"></section>
         </section>
         <!-- Start Modal -->
         <div id="modal-start" class="modal">
@@ -42,7 +42,7 @@
                 <div class="modalImage-start clearfix"></div>
                 <div class="modalTitle modalTitle-start">Memory Game</div>
                 <div class="modal-footer">
-                    <button class="start-btn btn">Начать игру<span class="start-btn-inner"></span></button>
+                    <button class="start-btn btn" data-tid="NewGame-startGame">Начать игру<span class="start-btn-inner"></span></button>
                 </div>
             </div>
         </div>
@@ -55,7 +55,7 @@
                     <p>Ваш итоговый счет: <span class="score">0</span></p>
                 </div>
                 <div class="modal-footer">
-                    <button class="restart-btn btn restart">Еще раз</button>
+                    <button class="restart-btn btn restart" data-tid="EndGame-retryGame">Еще раз</button>
                 </div>
             </div>
 

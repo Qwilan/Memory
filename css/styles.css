@@ -87,7 +87,7 @@ body {
     font-display: block;
 }
 
-.wrapper {
+.container {
     width: 720px;
     margin: 0 auto;
 }
@@ -383,7 +383,7 @@ body {
     .card {
         margin: 0 calc(10px * 1.5) calc(20px * 1.5);
     }
-    .wrapper {
+    .container {
         width: calc(720px * 1.5);
     }
     .board {
@@ -412,7 +412,7 @@ body {
     .card {
         margin: 0 calc(10px * 1) calc(20px * 1);
     }
-    .wrapper {
+    .container {
         width: calc(720px * 1);
     }
     .board {
@@ -441,7 +441,7 @@ body {
     .card {
         margin: 0 calc(10px / 1.12500) calc(20px / 1.12500);
     }
-    .wrapper {
+    .container {
         width: calc(720px / 1.12500);
     }
     .board {
@@ -470,7 +470,7 @@ body {
     .card {
         margin: 0 calc(10px / 1.5) calc(20px / 1.5);
     }
-    .wrapper {
+    .container {
         width: calc(720px / 1.5);
     }
     .board {
@@ -499,7 +499,7 @@ body {
     .card {
         margin: 0 calc(10px / 2.5) calc(20px / 2.5);
     }
-    .wrapper {
+    .container {
         width: calc(720px / 2.5);
     }
     .board {
@@ -525,7 +525,7 @@ body {
         width: 336px;
         padding: 0px 29px;
     }
-    .wrapper {
+    .container {
         width: 523px;
     }
     .board {
