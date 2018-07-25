@@ -1,2 +1,2 @@
-# Memory
-Memory game for Kontur
+# HIDE FROM INTERESTED
+HIDE FROM INTERESTED
